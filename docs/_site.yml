@@ -1,0 +1,27 @@
+name: "StatChat"                                # CHANGE HERE 
+output_dir: "."
+navbar:
+  title: "StatChat"                             # CHANGE HERE 
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "About"
+      icon: far fa-address-card 
+      href: about.html
+    - text: "Past Chats"
+      icon: fab fa-fort-awesome
+      href: past-meetings.html
+  right:
+    - text: "Contact me"
+      icon: fa-envelope-o
+      href: mailto:zief0002@umn.edu                    # CHANGE HERE 
+    - text: "GitHub"
+      icon: fa-github
+      href: https://github.com/zief0002/statchat       # CHANGE HERE 
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    css: stat_chat.css

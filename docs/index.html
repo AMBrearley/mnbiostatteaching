@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="An informal but informative get-together of local statistics educators in the Twin-Cities" />
+
+
+<title>StatChat</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="stat_chat.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">StatChat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="far fa far fa-address-card"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="past-meetings.html">
+    <span class="fab fa fab fa-fort-awesome"></span>
+     
+    Past Chats
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:zief0002@umn.edu">
+    <span class="fa fa-envelope-o"></span>
+     
+    Contact me
+  </a>
+</li>
+<li>
+  <a href="https://github.com/zief0002/statchat">
+    <span class="fa fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">StatChat</h1>
+<h4 class="author">An informal but informative get-together of local statistics educators in the Twin-Cities</h4>
+
+</div>
+
+
+<div style="width:100%; font-size:70%; text-align:right;">
+<img src="img/data.jpg" alt="Are we ready for our predicted future? by grace mcdunnough" style="width:100%;padding-bottom:0.5em;">
+<p style="margin-right:20px;">
+<i>Image credit:</i> Are we ready for our predicted future? by <a href="https://www.flickr.com/photos/gracemcdunnough/">grace mcdunnough</a> (License: <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a>)
+</p>
+</div>
+<p><br /><br /></p>
+<div id="apr.-01-2020-meeting" class="section level2">
+<h2>Apr. 01, 2020 Meeting</h2>
+<p>This StatChat is cancelled.</p>
+<p><code>#FlattenTheCurve</code> <code>#SocialDistancing</code> <code>#DoingOurPart</code></p>
+<!-- - **6:00&ndash;6:30 Settle In &amp; Eat** -->
+<!-- - **6:30&ndash;7:45 Guest Speaker:** [Matt Beckman](https://mdbeckman.github.io/) from the Statistics Department at Penn State will discuss Implementing version control as a learning objective in statistics courses.<br /> -->
+<!--   *Title:* Implementing version control as a learning objective in statistics courses using Git/Github -->
+<!--   *Abstract:* -->
+<!--   Version control tools (e.g. Git/GitHub) are integral to a reproducible workflow. There are many resources out there for learning Git/Github, but most are written for people with more technical experience. How can we onboard students efficiently? How can we help students avoid common problems? This session intends to (1) introduce the audience to version control principles, (2) make a case for version control as a substantive learning objective in teaching/training statisticians and analysts, and (3) share resources and engage participants in implementation details to begin integrating Git/GitHub as a meaningful part of a statistics course. We will discuss an implementation model suitable for both technical and non-technical students without prior experience needed.  We also discuss GitHub Classroom as a means to preserve academic integrity while still providing students real experience with tools designed to facilitate collaboration and code sharing. The session includes hands-on experiences with methods to first introduce GitHub to students, to streamline Git &amp; RStudio linkage, and to use GitHub Classroom to distribute assignments that include instructions, starter code, and data. -->
+<!-- - **7:45&ndash;8:00:** Discussion, wrap-up, and next StatChat (We need to pick  place to have our first ever StatChat social.) -->
+<!-- We hope to see you there!  If you plan to attend, [please RSVP by signing up to bring food or beverage to share](https://docs.google.com/spreadsheets/d/1Y09XZuKQyMPYnLZKgNV8cs2Bu3wY6Vr-Q1ZvM_8lUpE/edit#gid=0).  And please spread the word among any colleagues that may be interested in the night's topics. -->
+<!-- **Resources** -->
+<!-- - Luckie, D. B., Aubry, J. R., Marengo, B. J., Rivkin, A. M., Foos, L. A., &amp; Maleszewski, J. J. (2012). [Less teaching, more learning: 10-yr study supports increasing student learning through less coverage and more inquiry.](https://www.physiology.org/doi/full/10.1152/advan.00017.2012) *CAdvances in Physiology Education, 36*(4), 325&ndash;335. doi:10.1152/advan.00017.2012 -->
+<!-- - Schwartz, M. S., Sadler, P. M., Sonnerts, G., &amp; Tai, R. H. (2008). [Depth versus breadth: How content coverage in high school science courses relates to later success in college science coursework.](https://www.cfa.harvard.edu/smg/ficss/research/articles/SE_Depth_versus.pdf) *Science Education, 93*(5), 798&ndash;826. doi:10.1002/sce.20328 -->
+<!-- <br /> -->
+<!-- <hr /> -->
+<!-- <br /> -->
+<!-- ## Upcoming Meeting: Apr. 01, 2020 Meeting -->
+<!-- TBA -->
+<!-- Our next StatChat is Wednesday February 26, 2020 from 6:00--8:00pm at Macalester College (Room TBA). The agenda for the meeting will include: -->
+<!-- - **6:00&ndash;6:30 Settle In &amp; Eat** -->
+<!-- - **6:30&ndash;7:45 Guest Speaker:** [Matt Beckman](https://cei.umn.edu/staff/kris-gorman) from the Statistics Department at Penn State will discuss Implementing version control as a learning objective in statistics courses.<br /> -->
+<!--   *Title:* Implementing version control as a learning objective in statistics courses using Git/Github -->
+<!--   *Abstract:* -->
+<!--   Version control tools (e.g. Git/GitHub) are integral to a reproducible workflow. There are many resources out there for learning Git/Github, but most are written for people with more technical experience. How can we onboard students efficiently? How can we help students avoid common problems? This session intends to (1) introduce the audience to version control principles, (2) make a case for version control as a substantive learning objective in teaching/training statisticians and analysts, and (3) share resources and engage participants in implementation details to begin integrating Git/GitHub as a meaningful part of a statistics course. We will discuss an implementation model suitable for both technical and non-technical students without prior experience needed.  We also discuss GitHub Classroom as a means to preserve academic integrity while still providing students real experience with tools designed to facilitate collaboration and code sharing. The session includes hands-on experiences with methods to first introduce GitHub to students, to streamline Git &amp; RStudio linkage, and to use GitHub Classroom to distribute assignments that include instructions, starter code, and data. -->
+<!-- - **7:45&ndash;8:00:** Discussion, wrap-up, and next StatChat (We need to pick  place to have our first ever StatChat social.) -->
+<!-- We hope to see you there!  If you plan to attend, [please RSVP by signing up to bring food or beverage to share](https://docs.google.com/spreadsheets/d/1Y09XZuKQyMPYnLZKgNV8cs2Bu3wY6Vr-Q1ZvM_8lUpE/edit#gid=0).  And please spread the word among any colleagues that may be interested in the night's topics. -->
+<!-- **Resources** -->
+<!-- - Luckie, D. B., Aubry, J. R., Marengo, B. J., Rivkin, A. M., Foos, L. A., &amp; Maleszewski, J. J. (2012). [Less teaching, more learning: 10-yr study supports increasing student learning through less coverage and more inquiry.](https://www.physiology.org/doi/full/10.1152/advan.00017.2012) *CAdvances in Physiology Education, 36*(4), 325&ndash;335. doi:10.1152/advan.00017.2012 -->
+<!-- - Schwartz, M. S., Sadler, P. M., Sonnerts, G., &amp; Tai, R. H. (2008). [Depth versus breadth: How content coverage in high school science courses relates to later success in college science coursework.](https://www.cfa.harvard.edu/smg/ficss/research/articles/SE_Depth_versus.pdf) *Science Education, 93*(5), 798&ndash;826. doi:10.1002/sce.20328 -->
+<br />
+<hr />
+<p><br /></p>
+</div>
+<div id="upcoming-meeting-may-06-2020-statchat-social" class="section level2">
+<h2>Upcoming Meeting: May 06, 2020 (StatChat Social)</h2>
+<p>The May StatChat will be Wedesday May 06, 2020 from 6:00–8:00pm at the <a href="http://acadiapub.com/">Acadia Cafe</a> (329 Cedar Avenue). There is no formal program, instead this meeting is a StatChat social. Come enjoy some food and beverage debrief and celebrate our semesters. Rumor is that there might also be some pub trivia.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
