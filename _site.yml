@@ -1,7 +1,7 @@
-name: "UMN Biostat Teach"                                # CHANGE HERE 
+name: "UMN Biostat Teach"                          
 output_dir: "."
 navbar:
-  title: "UMN Teach"                             # CHANGE HERE 
+  title: "UMN Teach"
   type: inverse
   left:
     - text: "Home"
@@ -9,6 +9,6 @@ navbar:
       href: index.html
 output:
   html_document:
-    theme: cosmo
+    theme: minty
     highlight: textmate
     css: umn_bios_site.css
