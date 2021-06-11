@@ -1,7 +1,411 @@
 <!DOCTYPE html>
+
 <html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="A website of Minnesota Biostatistics Resources for Teaching and Learning" />
+
+<title>UMN Teach</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+</head>
+
 <body>
-<h1>This should be a header.</h1>
-<p>This should be body text under the header.</p>
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">StatChat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">University of Minnesota Biostatistics Teaching Website</h1>
+<h4 class="author">A Website of Minnesota Biostatistics Resources for Teaching and Learning</h4>
+
+</div>
+
+<p>
+This page describes resources which have been developed by Minnesota Biostatistics faculty and staff for teaching and/or learning biostatistics. It has been developed by <a href="https://directory.sph.umn.edu/bio/sph-a-z/ann-brearley">Ann Brearley</a>, <a href="https://directory.sph.umn.edu/bio/sph-a-z/laura-le">Laura Le</a>, and <a href="https://directory.sph.umn.edu/bio/sph-a-z/marta-shore">Marta Shore</a>. We hope you find it useful!!
+</p>
+
+
+<div id="biostat_lit" class="section level2">
+<h2>Biostatistical Literacy Course</h2>
+<ul>
+  <li>This one-semester stand-alone graduate course, PubH 6414, was developed by Ann Brearley and Laura Le and launched in 2016. The goal of the course is … (short description)</li>
+  <li>Link to most recent syllabus… or all syllabi to date e.g. Fall 2016 Online, Spring 2017 Online, etc. (links) – perhaps as a subpage specific to the course</li>
+  <li>Links to past talks and any publications</li>
+  <li>Information about what course materials we are willing to share and who to contact</li>
+</ul>
+
+</div>
+
+<div id="biostats4you" class="section level2">
+<h2><a href="https://biostats4you.umn.edu">Biostats4You Website</a></h2>
+<ul>
+  <li>Short description, emphasizing Ann's role</li>
+  <li>The Biostats4you website was developed to serve medical and public health researchers and professionals who wish to learn more about biostatistics. The site contains carefully selected and reviewed training materials especially suited for a non-statistician audience.</li>
+  <li>Also short plug for the BERD SIG organization, what it offers biostatistics faculty, and how to get involved</li>
+</ul>
+
+</div>
+
+<div id="tshs_portal" class="section level2">
+<h2><a href="https://www.causeweb.org/tshs/">TSHS Resources Portal</a></h2>
+<ul>
+  <li>Short description, emphasizing Ann's role</li>
+  <li><a href="https://escholarship.org/uc/item/8qh9b82c">Our publication on it</a> and the TSHS webinar (link forthcoming)</li>
+</ul>
+
+</div>
+
+<div id="blog" class="section level2">
+<h2><a href="https://stattlc.com">Statistics Teaching and Learning Corner Blog</a></h2>
+<ul>
+  <li>Short description, emphasizing Laura's role</li>
+</ul>
+
+</div>
+
+<div id="blog" class="section level2">
+<h2><a href="https://stattlc.com">Statistics Teaching and Learning Corner Blog</a></h2>
+<ul>
+  <li>Short description, emphasizing Laura's role</li>
+</ul>
+
+</div>
+
+<div id="islands" class="section level2">
+<h2>The Islands: A Tool for Teaching Statistics</h2>
+<ul>
+  <li>Short description, emphasizing UMN biostat role</li>
+  <li>Link to Michael's original paper</li>
+  <li>Links to past talks, workshops, Ann’s TSHS webinar, Ann and Susan’s SPH community talk</li>
+  <li>Link to separate page with information for instructors (as in the workshop we did), including the instructor tools document from ELS and link to mirror site</li>
+  <li>Link to our publication forthcoming</li>
+</ul>
+
+</div>
+
+<div id="webinars" class="section level2">
+<h2>TSHS Webinars</h2>
+<ul>
+  <li>Short description emphasizing Ann’s role; link to website with the public recordings</li>
+  <li>Also short plug for the TSHS section itself, what it offers biostatistics instructors and faculty, and how to get involved</li>
+</ul>
+
+</div>
+
+<div id="R_SAS_resources" class="section level2">
+<h2>Resources for Teaching R and SAS</h2>
+<ul>
+  <li>Information about the 6450-6451 software lessons we might be willing to share, and who to contact.</li>
+  <li>Information about any 7461-7462 resources (like Laura’s massive list of links) we might be willing to share</li>
+</ul>
+
+</div>
+
+<div id="other_resources" class="section level2">
+<h2>Resources from Elsewhere</h2>
+<ul>
+  <li>Sends to a subpage with links to other resources we have found valuable in teaching biostatistics, e.g. Julia Sharp’s new videos for use in teaching consulting</li>
+</ul>
+
+</div>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
 </body>
 </html>
