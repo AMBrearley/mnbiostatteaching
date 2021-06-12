@@ -9,6 +9,6 @@ navbar:
       href: index.html
 output:
   html_document:
-    theme: minty
+    theme: lumen
     highlight: textmate
     css: umn_bios_site.css
