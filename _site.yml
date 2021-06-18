@@ -9,6 +9,6 @@ navbar:
       href: index.html
 output:
   html_document:
-    theme: journal
+    theme: 2015-tc
     highlight: textmate
     css: umn_bios_site.css
